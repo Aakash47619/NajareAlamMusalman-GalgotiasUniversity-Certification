@@ -8,8 +8,8 @@ const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Galgotias University Blockchain Verifier",
-  description: "Verify certificates registered on the blockchain issued by Galgotias University",
+  title: "Galgotias University | Centers of Excellence",
+  description: "Galgotias University - Leading Private University in Uttar Pradesh. World-class education with Centers of Excellence and global recognition.",
   generator: "v0.app",
   icons: {
     icon: [

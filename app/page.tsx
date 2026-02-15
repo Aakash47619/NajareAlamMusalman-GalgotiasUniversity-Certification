@@ -1,257 +1,376 @@
-"use client"
+'use client'
 
-import { Card, CardContent } from "@/components/ui/card"
-import { CheckCircle, X, ChevronUp } from "lucide-react"
-import { useState, useEffect } from "react"
+import React, { useState } from 'react'
+import { Menu, X, ArrowRight } from 'lucide-react'
 
-export default function CertificateVerifier() {
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const [animationStep, setAnimationStep] = useState(0)
+export default function GalgotiasUniversityPage() {
+  const [menuOpen, setMenuOpen] = useState(false)
 
-  useEffect(() => {
-    if (isModalOpen) {
-      setAnimationStep(0)
-      const timer1 = setTimeout(() => setAnimationStep(1), 300)
-      const timer2 = setTimeout(() => setAnimationStep(2), 1000)
-      const timer3 = setTimeout(() => setAnimationStep(3), 1700)
+  const centersOfExcellence = [
+    { name: 'Cisco', logo: '🔵' },
+    { name: 'Tata', logo: '🏢' },
+    { name: 'Wipro', logo: '💼' },
+    { name: 'HP-Intel', logo: '💻' },
+    { name: 'HCL', logo: '🟦' },
+    { name: 'Tech Mahindra', logo: '🚀' },
+    { name: 'IBM', logo: '📱' },
+    { name: 'Microsoft', logo: '🪟' },
+  ]
 
-      return () => {
-        clearTimeout(timer1)
-        clearTimeout(timer2)
-        clearTimeout(timer3)
-      }
-    }
-  }, [isModalOpen])
+  const schools = [
+    { name: 'School of Engineering & Technology', image: '🏗️' },
+    { name: 'School of Business', image: '💼' },
+    { name: 'School of Applied Sciences', image: '🧪' },
+    { name: 'School of Law', image: '⚖️' },
+    { name: 'School of Liberal Arts', image: '📚' },
+    { name: 'School of Media & Communication', image: '📺' },
+  ]
+
+  const placementStats = [
+    { label: '1200+', description: 'Organizations' },
+    { label: '1.5Cr', description: 'Highest Package' },
+    { label: '5.4 LPA', description: 'Average Package' },
+    { label: '98%', description: 'Placement Rate' },
+    { label: '100+', description: 'Startups Founded' },
+  ]
+
+  const studentApps = [
+    { title: 'VedIQ', description: 'Learning Platform' },
+    { title: 'Sakhi', description: 'Women Safety App' },
+    { title: 'Artistica', description: 'Art Gallery' },
+    { title: 'Kipp', description: 'Event Management' },
+  ]
+
+  const news = [
+    { title: 'World University Rankings 2024', date: 'Dec 15, 2024', image: '🏆' },
+    { title: 'New Innovation Hub Inaugurated', date: 'Dec 10, 2024', image: '🚀' },
+    { title: 'Global Partnership Announced', date: 'Dec 5, 2024', image: '🌍' },
+  ]
 
   return (
-    <div className="min-h-screen bg-white flex flex-col lg:flex-row">
-      {/* Left Sidebar */}
-      <aside className="w-full lg:w-80 bg-white lg:border-r flex-shrink-0 overflow-y-auto border-b lg:border-b-0">
-        <div className="p-4 md:p-6">
-          {/* Verified Badge */}
-          <Card className="bg-green-50 border-green-200 mb-6">
-            <CardContent className="p-4">
-              <div className="flex items-center gap-2 mb-2">
-                <CheckCircle className="h-5 w-5 text-green-600" />
-                <span className="font-semibold text-gray-900">Verified</span>
+    <div className="min-h-screen bg-white">
+      {/* Navigation Header */}
+      <nav className="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            {/* Logo */}
+            <div className="flex items-center gap-2">
+              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-800 rounded flex items-center justify-center text-white font-bold text-sm">
+                GU
               </div>
-              <p className="text-sm text-gray-700 mb-2">This is a valid Ethereum certificate.</p>
-              <button onClick={() => setIsModalOpen(true)} className="text-sm text-blue-600 hover:underline underline">
-                Verify again
+              <span className="font-bold text-gray-900 hidden sm:inline text-sm md:text-base">Galgotias University</span>
+            </div>
+
+            {/* Desktop Menu */}
+            <div className="hidden md:flex items-center gap-8">
+              <a href="#about" className="text-gray-700 hover:text-blue-600 transition text-sm">About</a>
+              <a href="#academics" className="text-gray-700 hover:text-blue-600 transition text-sm">Academics</a>
+              <a href="#admissions" className="text-gray-700 hover:text-blue-600 transition text-sm">Admissions</a>
+              <a href="#campus-life" className="text-gray-700 hover:text-blue-600 transition text-sm">Campus Life</a>
+              <a href="#placements" className="text-gray-700 hover:text-blue-600 transition text-sm">Placements</a>
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="hidden sm:flex items-center gap-2 md:gap-3">
+              <button className="px-3 md:px-4 py-2 text-blue-600 border border-blue-600 rounded hover:bg-blue-50 transition text-xs md:text-sm">
+                Enquire
               </button>
-            </CardContent>
-          </Card>
-
-          {/* Request Email */}
-          <h3 className="font-semibold text-gray-900 mb-6">Request an official email</h3>
-
-          {/* Certificate Details */}
-          <div className="space-y-6">
-            <div>
-              <h4 className="text-xs md:text-sm font-bold text-gray-900 mb-1">ISSUE DATE</h4>
-              <p className="text-sm text-gray-700">Dec 20, 2024</p>
+              <button className="px-3 md:px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition text-xs md:text-sm">
+                Apply
+              </button>
             </div>
 
-            <div>
-              <h4 className="text-xs md:text-sm font-bold text-gray-900 mb-1">ISSUER</h4>
-              <p className="text-sm text-gray-700">Galgotias</p>
-            </div>
+            {/* Mobile Menu Button */}
+            <button
+              className="md:hidden p-1"
+              onClick={() => setMenuOpen(!menuOpen)}
+            >
+              {menuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
 
-            <div>
-              <h4 className="text-xs md:text-sm font-bold text-gray-900 mb-1">DIGITAL SIGNATURE TYPE</h4>
-              <div className="flex items-center gap-2">
-                <CheckCircle className="h-4 w-4 text-green-600" />
-                <span className="text-sm text-gray-700">MerkleProof2017</span>
+          {/* Mobile Menu */}
+          {menuOpen && (
+            <div className="md:hidden pb-4 space-y-3">
+              <a href="#about" className="block text-gray-700 hover:text-blue-600 text-sm">About</a>
+              <a href="#academics" className="block text-gray-700 hover:text-blue-600 text-sm">Academics</a>
+              <a href="#admissions" className="block text-gray-700 hover:text-blue-600 text-sm">Admissions</a>
+              <a href="#campus-life" className="block text-gray-700 hover:text-blue-600 text-sm">Campus Life</a>
+              <a href="#placements" className="block text-gray-700 hover:text-blue-600 text-sm">Placements</a>
+              <div className="flex flex-col gap-2 pt-2">
+                <button className="w-full px-4 py-2 text-blue-600 border border-blue-600 rounded text-sm">
+                  Enquire
+                </button>
+                <button className="w-full px-4 py-2 bg-blue-600 text-white rounded text-sm">
+                  Apply
+                </button>
               </div>
             </div>
+          )}
+        </div>
+      </nav>
 
-            <div>
-              <h4 className="text-xs md:text-sm font-bold text-gray-900 mb-1">ISSUER'S INFORMATION</h4>
-              <a
-                href="https://certificates.galgotiasuniversity.edu.in"
-                className="text-sm text-blue-600 hover:underline break-all"
+      {/* Hero Banner Section */}
+      <section className="mt-16 bg-gradient-to-r from-blue-600 to-blue-900 text-white py-16 md:py-20 px-4 text-center">
+        <div className="max-w-4xl mx-auto">
+          <h1 className="text-3xl md:text-5xl font-bold mb-4">Centers of Excellence</h1>
+          <p className="text-base md:text-xl text-blue-100">
+            Partnering with Industry Leaders to Shape Future Professionals
+          </p>
+        </div>
+      </section>
+
+      {/* Centers of Excellence Section */}
+      <section id="about" className="py-12 md:py-16 px-4 bg-gray-50">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-4xl font-bold text-center mb-12">Our Partner Organizations</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-8">
+            {centersOfExcellence.map((center, idx) => (
+              <div
+                key={idx}
+                className="bg-white p-4 md:p-6 rounded-lg shadow-md hover:shadow-lg transition text-center"
               >
-                certificates.galgotiasuniversity.edu.in
+                <div className="text-3xl md:text-4xl mb-3">{center.logo}</div>
+                <p className="font-semibold text-gray-900 text-sm md:text-base">{center.name}</p>
+              </div>
+            ))}
+          </div>
+          <div className="text-center">
+            <button className="px-6 py-2 md:py-3 bg-blue-600 text-white rounded hover:bg-blue-700 transition inline-flex items-center gap-2 text-sm md:text-base">
+              View More <ArrowRight size={18} />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Schools Section */}
+      <section id="academics" className="py-12 md:py-16 px-4">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-4xl font-bold text-center mb-12">Our Schools</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-8">
+            {schools.map((school, idx) => (
+              <div
+                key={idx}
+                className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition transform hover:scale-105"
+              >
+                <div className="bg-gradient-to-br from-blue-100 to-blue-50 p-8 md:p-12 text-center text-4xl md:text-5xl">
+                  {school.image}
+                </div>
+                <div className="p-6">
+                  <h3 className="font-bold text-base md:text-lg text-gray-900">{school.name}</h3>
+                  <button className="mt-4 text-blue-600 hover:text-blue-700 font-semibold text-xs md:text-sm">
+                    Learn More →
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="text-center">
+            <button className="px-6 py-2 md:py-3 bg-blue-600 text-white rounded hover:bg-blue-700 transition inline-flex items-center gap-2 text-sm md:text-base">
+              View All Schools <ArrowRight size={18} />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Placements Section */}
+      <section id="placements" className="py-12 md:py-16 px-4 bg-gray-50">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-4xl font-bold text-center mb-12">Outstanding Placements</h2>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6 mb-8">
+            {placementStats.map((stat, idx) => (
+              <div
+                key={idx}
+                className="bg-white p-4 md:p-6 rounded-lg shadow-md text-center hover:shadow-lg transition"
+              >
+                <p className="text-2xl md:text-4xl font-bold text-blue-600 mb-2">{stat.label}</p>
+                <p className="text-gray-600 text-xs md:text-base">{stat.description}</p>
+              </div>
+            ))}
+          </div>
+          <div className="text-center">
+            <button className="px-6 py-2 md:py-3 bg-blue-600 text-white rounded hover:bg-blue-700 transition inline-flex items-center gap-2 text-sm md:text-base">
+              View More Details <ArrowRight size={18} />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Campus Life Section */}
+      <section id="campus-life" className="py-12 md:py-16 px-4">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-4xl font-bold text-center mb-12">Campus Life</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-8">
+            {[
+              { title: 'Student Council & Groups', emoji: '👥' },
+              { title: 'Incubation Centre', emoji: '🚀' },
+              { title: 'Sports & Recreation', emoji: '⚽' },
+              { title: 'Research Labs', emoji: '🔬' },
+            ].map((item, idx) => (
+              <div
+                key={idx}
+                className="bg-white rounded-lg shadow-md p-6 md:p-8 hover:shadow-lg transition"
+              >
+                <div className="text-4xl md:text-5xl mb-4">{item.emoji}</div>
+                <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
+                <p className="text-gray-600 text-sm md:text-base mb-4">
+                  Explore diverse opportunities for personal and professional growth on our vibrant campus.
+                </p>
+                <button className="text-blue-600 hover:text-blue-700 font-semibold text-xs md:text-sm">
+                  Know More →
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Student Achievements Section */}
+      <section className="py-12 md:py-16 px-4 bg-gray-50">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-4xl font-bold text-center mb-12">Student Achievements</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8">
+            {studentApps.map((app, idx) => (
+              <div
+                key={idx}
+                className="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition"
+              >
+                <div className="text-3xl md:text-4xl mb-3">{'📱'}</div>
+                <h3 className="font-bold text-base md:text-lg text-gray-900 mb-2">{app.title}</h3>
+                <p className="text-gray-600 text-xs md:text-sm">{app.description}</p>
+              </div>
+            ))}
+          </div>
+          <div className="text-center">
+            <button className="px-6 py-2 md:py-3 bg-blue-600 text-white rounded hover:bg-blue-700 transition inline-flex items-center gap-2 text-sm md:text-base">
+              View All <ArrowRight size={18} />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Accreditations Section */}
+      <section className="py-12 md:py-16 px-4">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-4xl font-bold text-center mb-12">International Accreditations</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            {[
+              { name: 'AACSB', description: 'Association to Advance Collegiate Schools of Business' },
+              { name: 'UGC', description: 'University Grants Commission - India' },
+              { name: 'AICTE', description: 'All India Council for Technical Education' },
+            ].map((accr, idx) => (
+              <div key={idx} className="bg-blue-50 rounded-lg p-6 text-center hover:shadow-lg transition">
+                <div className="text-4xl mb-3">{'🏅'}</div>
+                <h3 className="font-bold text-base md:text-lg text-gray-900 mb-2">{accr.name}</h3>
+                <p className="text-gray-600 text-xs md:text-sm">{accr.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* News & Events Section */}
+      <section className="py-12 md:py-16 px-4 bg-gray-50">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-4xl font-bold text-center mb-12">Latest News & Events</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-8">
+            {news.map((item, idx) => (
+              <div
+                key={idx}
+                className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition"
+              >
+                <div className="bg-gradient-to-br from-blue-100 to-blue-50 p-8 text-center text-4xl md:text-5xl">
+                  {item.image}
+                </div>
+                <div className="p-6">
+                  <p className="text-xs md:text-sm text-gray-500 mb-2">{item.date}</p>
+                  <h3 className="font-bold text-gray-900 text-sm md:text-base mb-3">{item.title}</h3>
+                  <button className="text-blue-600 hover:text-blue-700 font-semibold text-xs md:text-sm">
+                    Read More →
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="text-center">
+            <button className="px-6 py-2 md:py-3 bg-blue-600 text-white rounded hover:bg-blue-700 transition inline-flex items-center gap-2 text-sm md:text-base">
+              View All News <ArrowRight size={18} />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-gray-300 py-12 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-8">
+            {/* About Column */}
+            <div>
+              <h3 className="text-white font-bold mb-4 text-sm md:text-base">About Us</h3>
+              <ul className="space-y-2 text-xs md:text-sm">
+                <li><a href="#" className="hover:text-white transition">About Galgotias</a></li>
+                <li><a href="#" className="hover:text-white transition">Leadership</a></li>
+                <li><a href="#" className="hover:text-white transition">History</a></li>
+                <li><a href="#" className="hover:text-white transition">Careers</a></li>
+              </ul>
+            </div>
+
+            {/* Academics Column */}
+            <div>
+              <h3 className="text-white font-bold mb-4 text-sm md:text-base">Academics</h3>
+              <ul className="space-y-2 text-xs md:text-sm">
+                <li><a href="#" className="hover:text-white transition">Engineering</a></li>
+                <li><a href="#" className="hover:text-white transition">Business</a></li>
+                <li><a href="#" className="hover:text-white transition">Science</a></li>
+                <li><a href="#" className="hover:text-white transition">Law</a></li>
+              </ul>
+            </div>
+
+            {/* Admissions Column */}
+            <div>
+              <h3 className="text-white font-bold mb-4 text-sm md:text-base">Admissions</h3>
+              <ul className="space-y-2 text-xs md:text-sm">
+                <li><a href="#" className="hover:text-white transition">UG Admissions</a></li>
+                <li><a href="#" className="hover:text-white transition">PG Admissions</a></li>
+                <li><a href="#" className="hover:text-white transition">Scholarships</a></li>
+                <li><a href="#" className="hover:text-white transition">Fees</a></li>
+              </ul>
+            </div>
+
+            {/* Contact Column */}
+            <div>
+              <h3 className="text-white font-bold mb-4 text-sm md:text-base">Contact</h3>
+              <ul className="space-y-2 text-xs md:text-sm">
+                <li>Email: info@galgotiasuniversity.edu.in</li>
+                <li>Phone: +91-120-3021000</li>
+                <li>Address: Gautam Budh Nagar, UP</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Verification Button */}
+          <div className="border-t border-gray-700 pt-6 md:pt-8 mb-6 md:mb-8">
+            <div className="text-center">
+              <p className="text-gray-400 mb-4 text-sm md:text-base">Verify Your Academic Credentials</p>
+              <a
+                href="https://v0.app/chat/certificate-verification-page-cgw5mW9s3cB"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block px-6 md:px-8 py-2 md:py-3 bg-blue-600 text-white rounded hover:bg-blue-700 transition font-semibold text-sm md:text-base"
+              >
+                Certificate Verification
               </a>
             </div>
-
-            <div>
-              <h4 className="text-xs md:text-sm font-bold text-gray-900 mb-1">ISSUER'S PUBLIC KEY</h4>
-              <p className="text-sm text-gray-700 break-all font-mono">0xa65fc6705eea9e6a1b9ebc9d7a92bcf3d6749a65</p>
-            </div>
-
-            <div>
-              <h4 className="text-xs md:text-sm font-bold text-gray-900 mb-1">TRANSACTION ID</h4>
-              <p className="text-sm text-gray-700 break-all font-mono">
-                0x07fef4c31cf83cc3335a2edef2d5cde0b2ddc85e6aedbd4b1ca58cd084c048a7
-              </p>
-            </div>
           </div>
 
-          {/* No metadata notice */}
-          <div className="mt-8 pt-6 border-t">
-            <p className="text-xs text-gray-400">No metadata specified for this record</p>
-          </div>
-
-          {/* Powered By section with Certonce logo */}
-          <div className="mt-8 pt-6 border-t">
-            <p className="text-xs text-gray-500 font-semibold mb-3 text-center">POWERED BY</p>
-            <div className="flex justify-center">
-              <img
-                src="/images/certance-20img-20hd.png"
-                alt="Certonce - Blockchain Verified Credentials"
-                className="h-8 md:h-12 w-auto"
-              />
-            </div>
+          {/* Copyright */}
+          <div className="border-t border-gray-700 pt-6 md:pt-8">
+            <p className="text-center text-xs md:text-sm text-gray-500">
+              &copy; 2024 Galgotias University. All rights reserved.
+            </p>
           </div>
         </div>
-      </aside>
-
-      {/* Main Content - Certificate Preview */}
-      <main className="flex-1 overflow-y-auto w-full">
-        {/* Header with name and close button */}
-        <div className="flex items-center justify-between p-4 md:p-6 border-b">
-          <h1 className="text-xl md:text-2xl font-bold text-gray-900">Saileshnath Tripathi</h1>
-          <button className="p-1 hover:bg-gray-100 rounded">
-            <X className="h-6 w-6 text-gray-600" />
-          </button>
-        </div>
-
-        {/* Certificate Display */}
-        <div className="p-4 md:p-8">
-          <div className="max-w-4xl mx-auto space-y-6 md:space-y-8">
-            {/* Certificate Front Page */}
-            <div className="bg-white shadow-lg">
-              <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/najare%20alam%20certificate_img-AuEgqRR7y0NDqXDfK6prICxum4oAvG.jpg" alt="Certificate Front Page" className="w-full h-auto" />
-            </div>
-
-            {/* Certificate Back Page */}
-            <div className="bg-white shadow-lg">
-              <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/najare%20alam%20cert-FxAFWF9THXt9tDQqyJ6qvTuPhEHOO0.png" alt="Certificate Back Page" className="w-full h-auto" />
-            </div>
-          </div>
-        </div>
-
-        {/* Modal */}
-        {isModalOpen && (
-          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-            <div className="bg-white rounded-lg shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-              {/* Modal Header */}
-              <div className="p-4 md:p-6 border-b relative">
-                <button
-                  onClick={() => setIsModalOpen(false)}
-                  className="absolute top-4 right-4 p-1 hover:bg-gray-100 rounded"
-                >
-                  <X className="h-6 w-6 text-gray-600" />
-                </button>
-
-                <div className="flex flex-col md:flex-row items-start gap-4 md:gap-6">
-                  {/* University Logo */}
-                  <div className="flex-shrink-0">
-                    <img
-                      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/galgotias%20logo-5cgTFoThKsRENWNiJESbGZmCmHH75K.jpeg"
-                      alt="Galgotias Logo"
-                      className="h-24 md:h-32 w-24 md:w-32 object-contain"
-                    />
-                  </div>
-
-                  {/* Certificate Info */}
-                  <div className="flex-1">
-                    <h2 className="text-lg md:text-2xl font-semibold text-gray-900 mb-2">3481 Degree 2024</h2>
-                    <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">Saileshnath Tripathi</h3>
-                    <p className="text-sm md:text-base text-gray-700">Issued on Dec 20, 2024 by Galgotias</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Modal Body - Verification Timeline */}
-              <div className="p-4 md:p-8">
-                <div className="max-w-lg mx-auto">
-                  {/* Proof Verification */}
-                  <div
-                    className={`flex gap-3 md:gap-4 mb-6 transition-all duration-500 ${
-                      animationStep >= 1 ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-                    }`}
-                  >
-                    <div className="flex flex-col items-center flex-shrink-0">
-                      <div className="w-10 md:w-12 h-10 md:h-12 rounded-full bg-green-500 flex items-center justify-center">
-                        <CheckCircle className="h-5 md:h-6 w-5 md:w-6 text-white" />
-                      </div>
-                      <div
-                        className="w-1 bg-green-500 transition-all duration-700 ease-out"
-                        style={{ height: animationStep >= 2 ? "64px" : "0px" }}
-                      ></div>
-                    </div>
-                    <div className="flex-1 pt-2">
-                      <h4 className="text-lg md:text-xl font-semibold text-gray-900 mb-1">Proof Verification</h4>
-                      <button className="flex items-center gap-2 text-sm md:text-base text-gray-700 hover:text-gray-900">
-                        <span className="underline">8 Items</span>
-                        <ChevronUp className="h-4 w-4" />
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Status Check */}
-                  <div
-                    className={`flex gap-3 md:gap-4 mb-6 transition-all duration-500 ${
-                      animationStep >= 2 ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-                    }`}
-                  >
-                    <div className="flex flex-col items-center flex-shrink-0">
-                      <div className="w-10 md:w-12 h-10 md:h-12 rounded-full bg-green-500 flex items-center justify-center">
-                        <CheckCircle className="h-5 md:h-6 w-5 md:w-6 text-white" />
-                      </div>
-                      <div
-                        className="w-1 bg-green-500 transition-all duration-700 ease-out"
-                        style={{ height: animationStep >= 3 ? "64px" : "0px" }}
-                      ></div>
-                    </div>
-                    <div className="flex-1 pt-2">
-                      <h4 className="text-lg md:text-xl font-semibold text-gray-900 mb-1">Status check</h4>
-                      <button className="flex items-center gap-2 text-sm md:text-base text-gray-700 hover:text-gray-900">
-                        <span className="underline">2 Items</span>
-                        <ChevronUp className="h-4 w-4" />
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Verified */}
-                  <div
-                    className={`flex gap-3 md:gap-4 transition-all duration-500 ${
-                      animationStep >= 3 ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-                    }`}
-                  >
-                    <div className="flex flex-col items-center flex-shrink-0">
-                      <div className="w-10 md:w-12 h-10 md:h-12 rounded-full bg-green-500 flex items-center justify-center">
-                        <CheckCircle className="h-5 md:h-6 w-5 md:w-6 text-white" />
-                      </div>
-                    </div>
-                    <div className="flex-1 pt-2">
-                      <h4 className="text-xl md:text-2xl font-bold text-green-600 mb-2">Verified</h4>
-                      <p className="text-sm md:text-base text-gray-700 mb-2">This is a valid Ethereum certificate.</p>
-                      <a href="#" className="text-sm md:text-base text-blue-600 hover:underline underline">
-                        View transaction link
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Modal Footer - Certonce Logo */}
-              <div className="border-t bg-gray-50 p-4">
-                <div className="flex items-center justify-end gap-2 flex-wrap">
-                  <span className="text-xl md:text-2xl font-bold text-blue-900">CERT</span>
-                  <div className="w-5 md:w-6 h-5 md:h-6 bg-orange-500 rounded flex items-center justify-center flex-shrink-0">
-                    <div className="w-3 md:w-4 h-3 md:h-4 border-2 border-white"></div>
-                  </div>
-                  <span className="text-xl md:text-2xl font-bold text-orange-500">NCE</span>
-                </div>
-                <p className="text-xs text-gray-600 text-right mt-1">BLOCKCHAIN VERIFIED CREDENTIALS</p>
-              </div>
-            </div>
-          </div>
-        )}
-      </main>
+      </footer>
     </div>
   )
 }
